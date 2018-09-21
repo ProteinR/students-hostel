@@ -22,7 +22,9 @@ require_once 'connect_db.php';
   <body>
 
   <a href="querry/all-students.php" type="button" class="btn btn-primary">Просмотр всех студентов</a>
-  <a type="button" class="btn btn-primary">Просмотр всех факультетов</a>
+  <a href="#" type="button" class="btn btn-primary">Просмотр всех факультетов</a>
+  <a href="#" type="button" class="btn btn-primary">Поиск свободных комнат</a>
+
 
   <div class="table-students">
       <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -71,22 +73,22 @@ require_once 'connect_db.php';
         $query = 'SELECT * FROM students';
         $students = $pdo->query($query);
 
-//        foreach ($students as $student) {
-//            echo "<tr>";
-//                foreach ($student as $v) {
-//                    echo "<td>";
-//                    echo $v;
-//                    echo "</td>";
-//                }
-//            echo "</tr>";
-//        }
+        foreach ($students as $student) {
+            echo "<tr>";
+                foreach ($student as $v) {
+                    echo "<td>";
+                    echo $v;
+                    echo "</td>";
+                }
+            echo "</tr>";
+        }
 
-      foreach ($students as $student) {
-          var_dump($student);
-          foreach ($student as $v) {
-              //var_dump($v);
-          }
-      }
+//      foreach ($students as $student) {
+//          var_dump($student);
+//          foreach ($student as $v) {
+//              //var_dump($v);
+//          }
+//      }
       ?>
       </table>
 
