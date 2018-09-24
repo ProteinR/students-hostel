@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20bb9532-0dd2-44f6-b531-cf4d5f715f83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/faculties.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/faculties.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/querry/all-students.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/all-students.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +52,7 @@
     <session id="1028081572">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -64,13 +60,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="270" />
-          <entry key="php" value="665" />
+          <entry key="php" value="704" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="270" />
-          <entry key="PHP" value="659" />
+          <entry key="PHP" value="698" />
           <entry key="SQL" value="6" />
         </counts>
       </usages-collector>
@@ -139,8 +135,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/search.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+            <state relative-caret-position="290">
+              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+              <folding>
+                <element signature="e#2195#2229#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -241,18 +240,18 @@
       <option name="presentableId" value="Default" />
       <updated>1537516323455</updated>
       <workItem from="1537516324646" duration="7049000" />
-      <workItem from="1537525867719" duration="13834000" />
+      <workItem from="1537525867719" duration="14248000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20883000" />
+    <option name="totallyTimeSpent" value="21297000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1708502" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1708502" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -346,8 +345,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/search.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        <state relative-caret-position="290">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+          <folding>
+            <element signature="e#2195#2229#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
