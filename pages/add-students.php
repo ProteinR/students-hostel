@@ -14,7 +14,7 @@ require_once '../connect_db.php';
             <div class="card">
                 <!--Card content-->
                 <div class="card-body">
-                    <form name="sutent-data" method="post" action="">
+                    <form name="sutent-data" method="post" action="" class="" >
                         <!-- Heading -->
                         <h3 class="dark-grey-text text-center">
                             <strong>Данные студента:</strong>
@@ -25,6 +25,9 @@ require_once '../connect_db.php';
                             <i class="fa fa-user prefix grey-text"></i>
                             <input type="text" class="form-control" name="fio" id="form11">
                             <label for="form11">Фио</label>
+                            <div class="invalid-tooltip">
+                                Пожалуйста, введите ФИО.
+                            </div>
                         </div>
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
@@ -43,7 +46,7 @@ require_once '../connect_db.php';
                         </div>
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" class="form-control" name="fac-id" id="form7">
+                            <input type="text" class="form-control" name="fac_id" id="form7">
                             <label for="form7">Факультет (id)</label>
                         </div>
                         <div class="md-form">
@@ -95,3 +98,49 @@ require_once '../connect_db.php';
 
     <?
 //    var_dump($_POST);
+    if ($_POST['fio'] != ''){
+        echo "Выполняет запрос";
+
+
+
+        $fio = htmlspecialchars(strip_tags($_POST['fio']));
+        $gender = (bool)($_POST['gender']);
+        $block = htmlspecialchars(strip_tags($_POST['block']));
+        $passport = htmlspecialchars(strip_tags($_POST['passport']));
+        $fac_id = (int)htmlspecialchars(strip_tags($_POST['fac_id']));
+        $course = htmlspecialchars(strip_tags($_POST['course']));
+        $group_number = htmlspecialchars(strip_tags($_POST['group_number']));
+        $room_id = (int)htmlspecialchars(strip_tags($_POST['room_id']));
+        $personal_phone = htmlspecialchars(strip_tags($_POST['personal_phone']));
+        $home_address = htmlspecialchars(strip_tags($_POST['home_address']));
+
+        echo "<pre>";
+        var_dump($fac_id);
+        echo "</pre>";
+
+
+        $stmt = $pdo->prepare("INSERT INTO students (fio, gender, block, passport, fac_id, course, group_number, room_id, personal_phone, home_address) 
+                                VALUES (:fio, :gender, :block, :passport, :fac_id, :course, :group_number, :room_id, :personal_phone, :home_address)");
+        $stmt->bindParam(':fio', $fio);
+        $stmt->bindParam(':gender', $gender, PDO::PARAM_BOOL);
+        $stmt->bindParam(':block', $block);
+        $stmt->bindParam(':passport', $passport);
+        $stmt->bindParam(':fac_id', $fac_id, PDO::PARAM_INT);
+        $stmt->bindParam(':course', $course);
+        $stmt->bindParam(':group_number', $group_number);
+        $stmt->bindParam(':room_id', $room_id, PDO::PARAM_INT);
+        $stmt->bindParam(':personal_phone', $personal_phone);
+        $stmt->bindParam(':home_address', $home_address);
+        $stmt->execute();
+
+        echo "<pre>";
+        var_dump($stmt);
+        echo "</pre>";
+
+    }else {
+        echo "не соблюдено условие";
+        echo "<pre>";
+        var_dump($_POST);
+        echo "</pre>";
+
+    }
