@@ -5,6 +5,7 @@ require_once '../connect_db.php';
 
 $query = 'SELECT * FROM faculties';
 $faculties = $pdo->query($query);
+
 ?>
 
 <div class="table-students">

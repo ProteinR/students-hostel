@@ -3,9 +3,26 @@
 require_once 'header.html';
 require_once '../connect_db.php';
 
-//$query = '';
-//$faculties = $pdo->query($query);
+$query = 'SELECT * FROM faculties';
+$facObj = $pdo->query($query); //объект с рез-том запроса
+
+
+$arrFaculties = $facObj->fetchAll(PDO::FETCH_KEY_PAIR); //массив вида $id => $value
+
+
+//echo "<pre>";
+//var_dump($arrFac);
+//echo "</pre>";
+//
+//foreach ($arrFac as $id => $facName) {
+//    echo "$id => $facName";
+//    echo "<br>";
+//}
+
 ?>
+
+
+
 
 <div class="container my-5">
     <div class="row">
@@ -21,6 +38,8 @@ require_once '../connect_db.php';
                         </h3>
                         <hr>
 
+
+
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
                             <input type="text" class="form-control" name="fio" id="form11">
@@ -29,14 +48,27 @@ require_once '../connect_db.php';
                                 Пожалуйста, введите ФИО.
                             </div>
                         </div>
-                        <div class="md-form">
-                            <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" class="form-control" value="1" name="gender" id="form10">
-                            <label for="form10">Пол</label>
+
+                        <div class="select md-form" >
+                            <i class="fa fa-genderless prefix grey-text"></i>
+                            <select class="select-text" style="" name="gender" required>
+                                <option value="" disabled selected></option>
+                                <option value="1">Мужской</option>
+                                <option value="0">Женский</option>
+                            </select>
+                            <span class="select-highlight"></span>
+                            <span class="select-bar"></span>
+                            <label class="select-label">Пол</label>
                         </div>
+
+<!--                        <div class="md-form">-->
+<!--                            <i class="fa fa-user prefix grey-text"></i>-->
+<!--                            <input type="text" class="form-control" value="1" name="gender" id="form10">-->
+<!--                            <label for="form10">Пол</label>-->
+<!--                        </div>-->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" class="form-control" name="box" id="form9">
+                            <input type="text" class="form-control" name="block" id="form9">
                             <label for="form9">Корпус (A,B,C)</label>
                         </div>
                         <div class="md-form">
@@ -44,11 +76,31 @@ require_once '../connect_db.php';
                             <input type="text" class="form-control" name="passport" id="form8">
                             <label for="form8">Пасспорт</label>
                         </div>
-                        <div class="md-form">
-                            <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" class="form-control" name="fac_id" id="form7">
-                            <label for="form7">Факультет (id)</label>
+<!--                        <div class="md-form">-->
+<!--                            <i class="fa fa-user prefix grey-text"></i>-->
+<!--                            <input type="text" class="form-control" name="fac_id" id="form7">-->
+<!--                            <label for="form7">Факультет (id)</label>-->
+<!--                        </div>-->
+
+                        <div class="select md-form" >
+                            <i class="fa fa-building prefix grey-text"></i>
+                            <select class="select-text" style="" name="fac_id" required>
+                                <option value="" disabled selected></option>
+                                <?
+                                    foreach ($arrFaculties as $id => $facName) {
+                                        echo "<option value='{$id}'>$facName </option>>";
+                                    }
+
+                                ?>
+
+                            </select>
+                            <span class="select-highlight"></span>
+                            <span class="select-bar"></span>
+                            <label class="select-label">Факультет</label>
                         </div>
+
+
+
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
                             <input type="text" class="form-control" name="course" id="form6">
@@ -56,7 +108,7 @@ require_once '../connect_db.php';
                         </div>
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" class="form-control" name="group" id="form5">
+                            <input type="text" class="form-control" name="group_number" id="form5">
                             <label for="form5">Группа</label>
                         </div>
                         <div class="md-form">
@@ -66,7 +118,7 @@ require_once '../connect_db.php';
                         </div>
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text"></i>
-                            <input type="text" id="form3" name="phone" class="form-control">
+                            <input type="text" id="form3" name="personal_phone" class="form-control">
                             <label for="form3">Телефон</label>
                         </div>
                         <div class="md-form">
@@ -76,7 +128,7 @@ require_once '../connect_db.php';
                         </div>
                         <div class="md-form">
                             <i class="fa fa-home prefix grey-text"></i>
-                            <input type="text" class="form-control" name="home_adress" id="form1">
+                            <input type="text" class="form-control" name="home_address" id="form1">
                             <label for="form1">Домашний адресс</label>
                         </div>
 
@@ -112,15 +164,16 @@ require_once '../connect_db.php';
         $group_number = htmlspecialchars(strip_tags($_POST['group_number']));
         $room_id = (int)htmlspecialchars(strip_tags($_POST['room_id']));
         $personal_phone = htmlspecialchars(strip_tags($_POST['personal_phone']));
+        $parents_phone = htmlspecialchars(strip_tags($_POST['parents_phone']));
         $home_address = htmlspecialchars(strip_tags($_POST['home_address']));
 
-        echo "<pre>";
-        var_dump($fac_id);
-        echo "</pre>";
+//        echo "<pre>";
+//        var_dump($gender);
+//        echo "</pre>";
 
 
-        $stmt = $pdo->prepare("INSERT INTO students (fio, gender, block, passport, fac_id, course, group_number, room_id, personal_phone, home_address) 
-                                VALUES (:fio, :gender, :block, :passport, :fac_id, :course, :group_number, :room_id, :personal_phone, :home_address)");
+        $stmt = $pdo->prepare("INSERT INTO students (fio, gender, block, passport, fac_id, course, group_number, room_id, personal_phone, parents_phone, home_address) 
+                                VALUES (:fio, :gender, :block, :passport, :fac_id, :course, :group_number, :room_id, :personal_phone, :parents_phone, :home_address)");
         $stmt->bindParam(':fio', $fio);
         $stmt->bindParam(':gender', $gender, PDO::PARAM_BOOL);
         $stmt->bindParam(':block', $block);
@@ -130,11 +183,12 @@ require_once '../connect_db.php';
         $stmt->bindParam(':group_number', $group_number);
         $stmt->bindParam(':room_id', $room_id, PDO::PARAM_INT);
         $stmt->bindParam(':personal_phone', $personal_phone);
+        $stmt->bindParam(':parents_phone', $parents_phone);
         $stmt->bindParam(':home_address', $home_address);
         $stmt->execute();
 
         echo "<pre>";
-        var_dump($stmt);
+        var_dump($_POST);
         echo "</pre>";
 
     }else {
@@ -144,3 +198,5 @@ require_once '../connect_db.php';
         echo "</pre>";
 
     }
+    ?>
+
