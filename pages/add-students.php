@@ -5,24 +5,9 @@ require_once '../connect_db.php';
 
 $query = 'SELECT * FROM faculties';
 $facObj = $pdo->query($query); //объект с рез-том запроса
-
-
 $arrFaculties = $facObj->fetchAll(PDO::FETCH_KEY_PAIR); //массив вида $id => $value
 
-
-//echo "<pre>";
-//var_dump($arrFac);
-//echo "</pre>";
-//
-//foreach ($arrFac as $id => $facName) {
-//    echo "$id => $facName";
-//    echo "<br>";
-//}
-
 ?>
-
-
-
 
 <div class="container my-5">
     <div class="row">
@@ -60,12 +45,6 @@ $arrFaculties = $facObj->fetchAll(PDO::FETCH_KEY_PAIR); //массив вида 
                             <span class="select-bar"></span>
                             <label class="select-label">Пол</label>
                         </div>
-
-<!--                        <div class="md-form">-->
-<!--                            <i class="fa fa-user prefix grey-text"></i>-->
-<!--                            <input type="text" class="form-control" value="1" name="gender" id="form10">-->
-<!--                            <label for="form10">Пол</label>-->
-<!--                        </div>-->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
                             <input type="text" class="form-control" name="block" id="form9">
@@ -153,8 +132,6 @@ $arrFaculties = $facObj->fetchAll(PDO::FETCH_KEY_PAIR); //массив вида 
     if ($_POST['fio'] != ''){
         echo "Выполняет запрос";
 
-
-
         $fio = htmlspecialchars(strip_tags($_POST['fio']));
         $gender = (bool)($_POST['gender']);
         $block = htmlspecialchars(strip_tags($_POST['block']));
@@ -166,10 +143,6 @@ $arrFaculties = $facObj->fetchAll(PDO::FETCH_KEY_PAIR); //массив вида 
         $personal_phone = htmlspecialchars(strip_tags($_POST['personal_phone']));
         $parents_phone = htmlspecialchars(strip_tags($_POST['parents_phone']));
         $home_address = htmlspecialchars(strip_tags($_POST['home_address']));
-
-//        echo "<pre>";
-//        var_dump($gender);
-//        echo "</pre>";
 
 
         $stmt = $pdo->prepare("INSERT INTO students (fio, gender, block, passport, fac_id, course, group_number, room_id, personal_phone, parents_phone, home_address) 
@@ -190,13 +163,11 @@ $arrFaculties = $facObj->fetchAll(PDO::FETCH_KEY_PAIR); //массив вида 
         echo "<pre>";
         var_dump($_POST);
         echo "</pre>";
-
     }else {
         echo "не соблюдено условие";
         echo "<pre>";
         var_dump($_POST);
         echo "</pre>";
-
     }
     ?>
 

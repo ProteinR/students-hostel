@@ -9,7 +9,7 @@
 .select-text {
     position: relative;
     /*font-family: inherit;*/
-    background-color: #757575;
+    background-color: transparent;
     width: 100%;
     padding: 10px 10px 10px 40px;
     /*font-size: 18px;*/
@@ -48,7 +48,8 @@
 
 /* LABEL ======================================= */
 .select-label {
-    color: #757575;
+    color: rgba(0,0,0, 0.26);
+    /*color: #757575;*/
     /*font-size: 18px;*/
     /*font-weight: normal;*/
     position: absolute;
@@ -60,7 +61,8 @@
 
 /* active state */
 .select-text:focus ~ .select-label, .select-text:valid ~ .select-label {
-    color: #757575;
+    color: #2F80ED;
+    /*color: #757575;*/
     top: -20px;
     transition: 0.2s ease all;
     /*font-size: 14px;*/

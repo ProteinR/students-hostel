@@ -1,8 +1,8 @@
 <body>
 
 
-<div class="table-students">
-    <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<div class="table-students table-responsive-md">
+    <table id="dtBasicExample" class="table table-striped table-bordered w-auto" >
         <thead>
         <tr>
             <th class="th-sm">ID

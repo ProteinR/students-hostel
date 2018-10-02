@@ -89,3 +89,28 @@ SELECT fio, gender, block, passport, fac_name, course, group_number, room_number
 FROM students, faculties, rooms
 WHERE fac_id = faculties.id AND room_id = rooms.id AND LOWER(fio) LIKE LOWER('%иванов%')
 
+--Подсчет кол-ва людей в комнатах (view)
+Select room_id, count(*)
+FROM students
+GROUP BY room_id
+
+--вывод свободных комнат - работает, выводит комнаты в которых уже проживают и остались свободные места
+Select rooms.id
+FROM rooms, count_people_in_rooms
+WHERE room_id = rooms.id AND (rooms.places_count - count) > 0
+
+--вывод только тех комнат, которых нет ни у одного студента (полностью свободные) - работает 
+SELECT rooms.id
+FROM rooms, students
+WHERE rooms.id NOT IN (SELECT room_id FROM students)
+
+--Объеденённый первый и второй запрос - не работает
+Select rooms.id
+FROM rooms, count_people_in_rooms, students
+WHERE count_people_in_rooms.room_id = rooms.id AND (rooms.places_count - count) > 0 AND 
+	rooms.id NOT IN (SELECT room_id FROM students)
+
+--
+SELECT rooms.places_count - count_people_in_rooms.count AS Free_Places
+FROM rooms, count_people_in_rooms
+WHERE count_people_in_rooms.room_id = rooms.id
