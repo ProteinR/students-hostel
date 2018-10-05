@@ -45,6 +45,7 @@
         </tr>
         </thead>
         <?
+//        $query = 'SELECT * FROM students ORDER BY fio';
         $query = 'SELECT * FROM students';
         $students = $pdo->query($query);
 
