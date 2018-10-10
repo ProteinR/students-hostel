@@ -63,6 +63,7 @@ if ($_GET['delete-success'] == 1) {
                         echo "<td>
 <a onclick=\"return confirm('Вы уверены, что хотите выселить студента ?')\" href='action-move-out.php?move-out=1&id=$id' role='button' class='btn btn-warning waves-effect btn-sm'>Выселить</a>
 <a onclick=\"return confirm('Вы уверены, что хотите удалить студента ?')\" href='action-delete.php?delete=1&id=$id' role='button'  class='btn btn-danger mx-5 waves-effect btn-sm'>Удалить</a>
+<a href='update-form.php?update=1&id=$id' role='button'  class='btn btn-primary mx-5 waves-effect btn-sm'>Редактировать</a>
 </td>";
                     echo '</tr>';
                 }

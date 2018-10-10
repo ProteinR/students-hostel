@@ -114,3 +114,6 @@ WHERE count_people_in_rooms.room_id = rooms.id AND (rooms.places_count - count) 
 SELECT rooms.places_count - count_people_in_rooms.count AS Free_Places
 FROM rooms, count_people_in_rooms
 WHERE count_people_in_rooms.room_id = rooms.id
+
+--Создание триггера
+CREATE TRIGGER counter 

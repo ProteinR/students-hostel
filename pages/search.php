@@ -12,7 +12,7 @@ WHERE fac_id = faculties.id AND room_id = rooms.id AND LOWER(fio) LIKE LOWER(:na
 
     $student = $find -> fetch(PDO::FETCH_NUM);
 }catch (PDOException $e) {
- echo "Ошибка" . $e->getMessage();
+ echo "Ошибка <br>" . $e->getMessage();
 }
 ?>
 
